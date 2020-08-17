@@ -1,7 +1,7 @@
 .header{
   margin-bottom: 1em;
 }
-.page-container{
+/* .page-container{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -13,7 +13,7 @@
   margin-bottom: 4em;
   margin-top: 4em;
   margin: 2em;
-}
+} */
 .summary .btnA {
   width: 150px;
   border-radius: 40px;
@@ -151,7 +151,7 @@
 .display {
   height: 400px;
   width: 400px;
-  object-fit: cover;
+  object-fit: contain;
   margin: auto;
   margin-bottom: 1em;
 }
@@ -159,7 +159,7 @@
   height: 400px;
   width: 400px;
   margin: auto;
-  object-fit: cover;
+  object-fit: contain;
   border: 3px solid lightgray;
 }
 
@@ -172,13 +172,13 @@
   transform:scale(1, 1);
   z-index: 0;
   cursor: pointer;
-  object-fit: cover;
+  object-fit: contain;
   width: 7em;
   height: 7em;
   border: 2px solid lightgray;
 }
 .item img{
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
   height: auto;
 }
@@ -196,3 +196,4 @@
   height: 7em;
   border: none;
 }
+

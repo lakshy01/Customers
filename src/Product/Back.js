@@ -6,7 +6,6 @@ import Summary from './Summary';
 import Custombtn from './Custombtn';
 import Display from './Display';
 import Filter from './Filter';
-import history from '../history';
 
 class Back extends Component {
     constructor(props) {
@@ -37,14 +36,11 @@ class Back extends Component {
                                 cards={this.state.cards}
                                 cardSelect={cardId => this.cardSelect(cardId)} />
                             <Row >
-                                <ButtonGroup className="mx-auto" aria-label="Basic example">
-                                    <Button variant="light" className="btnAl" onClick={() => history.push('/Cuffs')}>Back</Button>
-                                    <Button variant="light" className="btnAr" onClick={() => history.push('/Front')}>Next</Button>
+                                <label className="scale">Measurements:  </label>
+                                <ButtonGroup id="options">
+                                    <Button>XS</Button><Button>S</Button><Button>M</Button><Button>L</Button><Button>XL</Button>
                                 </ButtonGroup>
-                            </Row>
-                            <Row >
-                                <Button variant="light" type="submit" className="btnB mx-auto" size="md" block >
-                                    Measurements</Button>
+                                <Button type="submit" variant="secondary" id="scale">Scale</Button>
                             </Row>
                         </Col>
                         <Col md={5}>
