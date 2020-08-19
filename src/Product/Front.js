@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Button, ButtonGroup } from 'react-bootstrap';
+import { Col, Row, Button, ButtonGroup, Container } from 'react-bootstrap';
 import './Custombtn.css';
 import { COLLARS } from "./non-components/collars";
 import Summary from './Summary';
@@ -35,13 +35,17 @@ class Front extends Component {
                             <Filter
                                 cards={this.state.cards}
                                 cardSelect={cardId => this.cardSelect(cardId)} />
-                            <Row >
-                                <label className="scale">Measurements:  </label>
-                                <ButtonGroup id="options">
-                                    <Button>XS</Button><Button>S</Button><Button>M</Button><Button>L</Button><Button>XL</Button>
-                                </ButtonGroup>
-                                <Button type="submit" variant="secondary" id="scale">Scale</Button>
-                            </Row>
+                            <Container style={{ marginLeft: "50px" }}>
+                                <h4 align="center" style={{marginTop:"20px", marginBottom:"20px"}}>Measurements:  </h4>
+                                <Container align="center" className="measure" style={{alignItems:"center"}}><Row>
+                                    <ButtonGroup id="options">
+                                        <Button>XS</Button><Button>S</Button><Button>M</Button><Button>L</Button><Button>XL</Button>
+                                    </ButtonGroup>
+                                    <Button type="submit" align="right" variant="secondary" id="scale" block style={{ width: "6em" }}>Scale</Button>
+                                </Row>
+                                </Container>
+                            </Container>
+
                         </Col>
                         <Col md={5}>
                             <Display card={
@@ -49,8 +53,13 @@ class Front extends Component {
                                     card => card.id === this.state.selectedCard)[0]} />
                         </Col>
                     </Row>
+                    <h4 align="center" style={{marginTop:"2em"}}>Customization Summary:</h4>
+                    <Container fluid >
+                        <Summary />
+                    </Container>
+                    <Button type="submit" variant="secondary" id="scale" style={{ margin: "20px auto", width: "7em" }} block>Post</Button>
+
                 </div>
-                <Summary />
             </div>
         );
     }

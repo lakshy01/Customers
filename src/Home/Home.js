@@ -56,12 +56,13 @@ export default class Home extends Component {
                             </Col>
                             <Col>
                                 <Form className="scale">
-                                    <label className="scale">Measurements:</label><br />
+                                    <h2 className="scale"  style={{marginBottom:"20px"}}>Measurements:</h2>
                                     <ButtonGroup id="options">
                                         <Button>XS</Button><Button>S</Button><Button>M</Button><Button>L</Button><Button>XL</Button>
                                     </ButtonGroup>
                                     <Button type="submit" variant="secondary" id="scale">Scale</Button>
-                                    <Button type="submit" variant="secondary" className="scalebtn" disabled={this.state.disabled} block onClick={() => history.push('/Collar')}>Customize</Button>
+                                    <Button type="submit" variant="secondary" style={{marginTop:"2em"}} className="scalebtn" disabled={this.state.disabled} block onClick={() => history.push('/Collar')}>Customize</Button>
+                                    <h2 className="scale"  style={{marginTop: "2em"}}>Customization Summary:</h2>
                                     <Summary />
                                 </Form>
                             </Col>
@@ -188,9 +189,9 @@ export default class Home extends Component {
                         </Container>
                         <Button id="post" variant="secondary" type="submit" block>Post</Button>
                     </Form>
-                    <Container className="instructions">
+                    <div className="instructions" >
+                    <Container style={{width:"500px"}} >
                         <h2>Instructions To Upload</h2>
-                        <hr align="left" style={{ width: "320px" }} />
                         <ul >
                             <li>Uploaded image should be clear.</li>
                             <li>Mention if there are any addtional requirements.</li>
@@ -199,6 +200,7 @@ export default class Home extends Component {
                             <li>In the Add images select, add selected to insert image into the page.</li>
                         </ul>
                     </Container>
+                    </div>
                 </div>
             </div>
         );

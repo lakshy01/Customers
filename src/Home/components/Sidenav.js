@@ -61,6 +61,7 @@ const Sidenav = props => {
                             </ul>
                         </Accordion>
                     </Accordion.Collapse>
+                    <hr/>
                     <Accordion.Toggle as="h4" eventKey="1">
                         Women</Accordion.Toggle>
                     <Accordion.Collapse eventKey="1">
@@ -151,6 +152,7 @@ const Sidenav = props => {
                             </ul>
                         </Accordion>
                     </Accordion.Collapse>
+                    <hr/>
                     <Accordion.Toggle as="h4" eventKey="2">
                         Kids</Accordion.Toggle>
                     <Accordion.Collapse eventKey="2">

@@ -1,7 +1,11 @@
+.instructions{
+    display: flex;
+    flex-direction: column;
+    align-content: center !important;
+}
 .Home {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 .Home .lander {
     top: 0;
@@ -61,7 +65,8 @@
 }
 .scale {
     margin: auto;
-    margin-bottom: 2em;
+    font-size: larger;
+    margin-bottom: -1em;
 }
 .scalebtn {
     background-color: #68ebd1;
@@ -73,7 +78,6 @@
     border-radius: 40px;
     text-align: center;
     margin: auto;
-    margin-top: 2em;
 }
 .scalebtn:focus-visible {
     outline: none !important;

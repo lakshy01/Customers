@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar, Container } from 'react-bootstrap';
 import './Custombtn.css';
 import { NavLink } from 'react-router-dom';
 import Routes from '../Routes';
@@ -7,7 +7,7 @@ import Routes from '../Routes';
 class Custombtn extends Component {
     render() {
         return (
-            <div >
+            <Container style={{margin: "2em"}}>
                 <h2 className="header">Casual Shirt</h2>
                 <Navbar className="bar">
                     <Nav fill className="navs mx-auto">
@@ -28,7 +28,7 @@ class Custombtn extends Component {
                         </Nav.Item>
                     </Nav>
                 </Navbar>
-            </div>
+            </Container>
         );
     }
 }

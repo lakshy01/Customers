@@ -7,9 +7,10 @@ class Summary extends React.Component {
             <div>
                 <Container fluid className="summary" >
                     <Form onSubmit={this.addItem}>
-                        <h5 style={{marginBottom: "20px"}}>Customization Summary </h5>
+                        <h5 style={{marginBottom: "2em", marginTop: "2em"}}> </h5>
                         <Form.Control as="textarea" type="text" style={{backgroundColor: "white"}} className="text" rows="5"
-                            value="{this.state.currentItem.text}" disabled/>
+                            value="Customization Summary" disabled/> 
+                            {/* {this.state.currentItem.text} */}
                     </Form>
                 </Container>
             </div>
