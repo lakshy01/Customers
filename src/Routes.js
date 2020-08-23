@@ -3,7 +3,7 @@ import { Router, Switch, Route } from "react-router-dom";
 import Home from "./Home/Home";
 import history from './history';
 import Collar from "./Product/Collar";
-import Cuffs from "./Product/Cuffs";
+import Cuffs from "./Product/Cuff";
 import Back from "./Product/Back";
 import Front from "./Product/Front";
 import Pocket from "./Product/Pocket";

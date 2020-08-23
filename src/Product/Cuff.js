@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Button, ButtonGroup, Container } from 'react-bootstrap';
 import './Custombtn.css';
-import { COLLARS } from "./non-components/collars";
+import { CUFFS } from "./non-components/cuffs";
 import Summary from './Summary';
 import Custombtn from './Custombtn';
 import Display from './Display';
@@ -12,7 +12,7 @@ class Cuffs extends Component {
         super(props);
 
         this.state = {
-            cards: COLLARS,
+            cards: CUFFS,
             selectedCard: null,
             cardFilter: null
         };
@@ -35,7 +35,16 @@ class Cuffs extends Component {
                             <Filter
                                 cards={this.state.cards}
                                 cardSelect={cardId => this.cardSelect(cardId)} />
-                            <Container style={{ marginLeft: "50px" }}>
+                        </Col>
+                        <Col md={5}>
+                            <Display card={
+                                this.state.cards.filter(
+                                    card => card.id === this.state.selectedCard)[0]} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                        <Container style={{ marginLeft: "50px" }}>
                                 <h4 align="center" style={{marginTop:"20px", marginBottom:"20px"}}>Measurements:  </h4>
                                 <Container align="center" className="measure" style={{alignItems:"center"}}><Row>
                                     <ButtonGroup id="options">
@@ -45,18 +54,15 @@ class Cuffs extends Component {
                                 </Row>
                                 </Container>
                             </Container>
-
                         </Col>
-                        <Col md={5}>
-                            <Display card={
-                                this.state.cards.filter(
-                                    card => card.id === this.state.selectedCard)[0]} />
-                        </Col>
-                    </Row>
-                    <h4 align="center" style={{marginTop:"2em"}}>Customization Summary:</h4>
+                        <Col>
+                        <h4 align="center" style={{marginTop:"2em"}}>Customization Summary:</h4>
                     <Container fluid >
                         <Summary />
                     </Container>
+                        </Col>
+                    </Row>
+                    
                     <Button type="submit" variant="secondary" id="scale" style={{ margin: "20px auto", width: "7em" }} block>Post</Button>
 
                 </div>

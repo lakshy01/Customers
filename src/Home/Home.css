@@ -4,8 +4,11 @@
     align-content: center !important;
 }
 .Home {
+    top: 0;
+    left: 56px;
     display: flex;
     flex-direction: column;
+    margin-left: 56px;
 }
 .Home .lander {
     top: 0;

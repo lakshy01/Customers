@@ -6,6 +6,7 @@ import Summary from './Summary';
 import Custombtn from './Custombtn';
 import Display from './Display';
 import Filter from './Filter';
+import history from './../history';
 
 class Collar extends Component {
     constructor(props) {
@@ -57,7 +58,7 @@ class Collar extends Component {
                     <Container fluid >
                         <Summary />
                     </Container>
-                    <Button type="submit" variant="secondary" id="scale" style={{ margin: "20px auto", width: "7em" }} block>Post</Button>
+                    <Button type="submit" variant="secondary" id="scale" style={{ margin: "20px auto", width: "7em" }} onClick={() => history.push('/')} block>Post</Button>
 
                 </div>
             </div>

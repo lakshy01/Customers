@@ -20,9 +20,11 @@
     display: flex;
     flex-direction: column;
     margin-left: -10px;
+    cursor: pointer;
 }
 .side-drawer li {
     margin: 0.1rem 0;
+    cursor: pointer;
 }
 .side-drawer a {
     color: black;
