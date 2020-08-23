@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import './Custombtn.css';
 import { NavLink } from 'react-router-dom';
-import Routes from '../Routes';
 
 class Custombtn extends Component {
     render() {
