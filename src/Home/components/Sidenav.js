@@ -2,6 +2,7 @@ import React from 'react'
 import { NAVOPTS } from '../non-components/navoptions'
 import './Sidenav.css'
 import { Accordion } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Sidenav = props => {
     let drawerClasses = 'side-drawer'
@@ -25,7 +26,9 @@ const Sidenav = props => {
                                             <ul>
                                                 {details.item.map((items) => {
                                                     return (
-                                                        <li><a href="/">{items.name}</a></li>
+                                                        <a href={'/' + items.name} style={{textDecoration:'none'}}>
+                                                            <li>{items.name}</li>
+                                                        </a>
                                                     )
                                                 })}
                                             </ul>

@@ -7,6 +7,7 @@ import Cuffs from "./Product/Cuff";
 import Back from "./Product/Back";
 import Front from "./Product/Front";
 import Pocket from "./Product/Pocket";
+import Itempage from './itemPage/Itempage';
 
 class App extends React.Component {
   render() {
@@ -19,7 +20,7 @@ class App extends React.Component {
           <Route path="/Back" component={Back} />
           <Route path="/Front" component={Front} />
           <Route path="/Pocket" component={Pocket} />
-          {/* <Route path="/:category_id" component={Pocket} /> */}
+          <Route path="/:item_id" component={Itempage} />
         </div>
       </BrowserRouter>
     );
