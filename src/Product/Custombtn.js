@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import './Custombtn.css';
 import { NavLink } from 'react-router-dom';
-import { NAVOPTS } from '../Home/non-components/navoptions';
 
 const Custombtn = props => {
-    // const [...elements] = NAVOPTS;
-    // console.log(elements);
     return (
         <Container style={{ margin: "2em" }}>
             <h2 className="header">Casual Shirt</h2>

@@ -15,12 +15,14 @@ class App extends React.Component {
       <BrowserRouter>
         <div className="App">
           <Route path="/" exact component={Home} />
-          <Route path="/Collar" component={Collar} />
-          <Route path="/Cuffs" component={Cuffs} />
-          <Route path="/Back" component={Back} />
-          <Route path="/Front" component={Front} />
-          <Route path="/Pocket" component={Pocket} />
+          <Route path="/CasualShirt/customization/Collar" component={Collar} />
+          <Route path="/:item_id/customization/Cuffs" component={Cuffs} />
+          <Route path="/customization/Back" component={Back} />
+          <Route path="/customization/Front" component={Front} />
+          <Route path="/customization/Pocket" component={Pocket} />
           <Route path="/:item_id" component={Itempage} />
+          {/* <Route path="/:item_id/customization" component={Itempage} />
+          <Route path="/:item_id/customization/:customizationId" component={Itempage} /> */}
         </div>
       </BrowserRouter>
     );

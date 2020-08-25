@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Col, Form, Container, Row, ButtonGroup } from 'react-bootstrap';
+import { Button, Col, Form, Container, Row, ButtonGroup, Alert } from 'react-bootstrap';
 import history from './../history';
 import "./Home.css";
 import Sidenav from './components/Sidenav';
@@ -11,7 +11,8 @@ export default class Home extends Component {
     state = {
         image: 'https://www.siliconvalleymedicalclinic.com/wp-content/plugins/complianz-gdpr/assets/images/placeholder.jpg',
         disabled: false,
-        sideDrawerOpen: false
+        sideDrawerOpen: false,
+        
     }
     drawerToggleClickHandler = () => {
         this.setState(prevState => {
@@ -30,6 +31,13 @@ export default class Home extends Component {
         }
         reader.readAsDataURL(e.target.files[0])
     }
+    alert = () => {
+        return (
+            <Alert variant="success">
+          </Alert>
+        )
+    }
+    
     render() {
         const { image } = this.state
         let backdrop
@@ -58,10 +66,10 @@ export default class Home extends Component {
                                 <Form className="scale">
                                     <h2 className="scale"  style={{marginBottom:"20px"}}>Measurements:</h2>
                                     <ButtonGroup id="options">
-                                        <Button>XS</Button><Button>S</Button><Button>M</Button><Button>L</Button><Button>XL</Button>
+                                        <Button >XS</Button><Button>S</Button><Button>M</Button><Button>L</Button><Button>XL</Button>
                                     </ButtonGroup>
                                     <Button type="submit" variant="secondary" id="scale">Scale</Button>
-                                    <Button type="submit" variant="secondary" style={{marginTop:"2em"}} className="scalebtn" disabled={this.state.disabled} block onClick={() => history.push('/Collar')}>Customize</Button>
+                                    <Button type="submit" variant="secondary" style={{marginTop:"2em"}} className="scalebtn" disabled={this.state.disabled} block onClick={() => this.alert()}>Customize</Button>
                                     <h2 className="scale"  style={{marginTop: "2em"}}>Customization Summary:</h2>
                                     <Summary />
                                 </Form>

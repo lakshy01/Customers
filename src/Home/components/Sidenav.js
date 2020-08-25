@@ -2,7 +2,6 @@ import React from 'react'
 import { NAVOPTS } from '../non-components/navoptions'
 import './Sidenav.css'
 import { Accordion } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 
 const Sidenav = props => {
     let drawerClasses = 'side-drawer'
@@ -12,7 +11,7 @@ const Sidenav = props => {
     return (
         <nav className={drawerClasses}>
             <ul>
-                {NAVOPTS.map((details) => {
+                {NAVOPTS.map((details, key) => {
                     return (
                         <Accordion className="accordian" style={{ textDecoration: 'none' }} defaultActiveKey="null">
                             <Accordion.Toggle as="h4" eventKey="0">

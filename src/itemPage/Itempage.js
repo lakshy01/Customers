@@ -12,7 +12,8 @@ export default class Itempage extends Component {
         image: 'https://www.siliconvalleymedicalclinic.com/wp-content/plugins/complianz-gdpr/assets/images/placeholder.jpg',
         disabled: false,
         sideDrawerOpen: false,
-        id: null
+        id: null,
+        size: ''
     }
     drawerToggleClickHandler = () => {
         this.setState(prevState => {
@@ -37,7 +38,9 @@ export default class Itempage extends Component {
             id: id
         })
     }
-
+    sizeUpdate = (e) => {
+        this.setState({ size: e})
+    }
     render() {
         const { image } = this.state
         let backdrop
@@ -66,12 +69,12 @@ export default class Itempage extends Component {
                                 <Form className="scale">
                                     <h2 className="scale"  style={{marginBottom:"20px"}}>Measurements:</h2>
                                     <ButtonGroup id="options">
-                                        <Button>XS</Button><Button>S</Button><Button>M</Button><Button>L</Button><Button>XL</Button>
+                                        <Button onClick={() => this.sizeUpdate('XS')}>XS</Button><Button onClick={() => this.sizeUpdate('S')}>S</Button><Button onClick={() => this.sizeUpdate('M')}>M</Button><Button onClick={() => this.sizeUpdate('L')}>L</Button><Button onClick={() => this.sizeUpdate('XL')}>XL</Button>
                                     </ButtonGroup>
                                     <Button type="submit" variant="secondary" id="scale">Scale</Button>
                                     <Button type="submit" variant="secondary" style={{marginTop:"2em"}} className="scalebtn" disabled={this.state.disabled} block onClick={() => history.push('/Collar')}>Customize</Button>
                                     <h2 className="scale"  style={{marginTop: "2em"}}>Customization Summary:</h2>
-                                    <Summary value={this.state.id} />
+                                    <Summary value={this.state.id} size={this.state.size}/>
                                      
                                 </Form>
                             </Col>
