@@ -10,7 +10,7 @@ export default class Home extends Component {
     state = {
         image: 'https://www.siliconvalleymedicalclinic.com/wp-content/plugins/complianz-gdpr/assets/images/placeholder.jpg',
         disabled: false,
-        sideDrawerOpen: false,
+        sideDrawerOpen: false
 
     }
     drawerToggleClickHandler = () => {
@@ -30,13 +30,6 @@ export default class Home extends Component {
         }
         reader.readAsDataURL(e.target.files[0])
     }
-    alert() {
-        return (
-            <Alert variant='warning'>
-                Choose a category to proceed
-            </Alert>
-        )
-    }
 
     render() {
         const { image } = this.state
@@ -45,20 +38,25 @@ export default class Home extends Component {
         if (this.state.sideDrawerOpen) {
             backdrop = <Backdrop click={this.backdropClickHandler} />
         }
+        const handleShow = () => this.setState({ show: true });
+        const handleHide = () => this.setState({ show: false });
         return (
             <div style={{ height: '100%' }} className="Home">
                 <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
                 <Sidenav show={this.state.sideDrawerOpen} />
                 {backdrop}
                 <div className="lander">
+                        <Alert variant="warning" show={this.state.show} onClick={handleHide} dismissible>
+                            Choose a category to proceed
+                        </Alert>
                     <Container className="customize">
                         <Row>
                             <Col>
                                 <div className="img-holder">
                                     <img src={image} alt="" id="img" className="img" />
                                 </div>
-                                <input type="file" id="input" accept="image/*" onChange={this.imageHandler}></input>
-                                <label htmlFor="input" className="image-upload">
+                                <input type="file" id="input" accept="image/*" onChange={this.imageHandler} disabled></input>
+                                <label htmlFor="input" className="image-upload" onClick={handleShow} >
                                     Upload Image
                             </label>
                             </Col>
@@ -69,8 +67,7 @@ export default class Home extends Component {
                                         <Button >XS</Button><Button>S</Button><Button>M</Button><Button>L</Button><Button>XL</Button>
                                     </ButtonGroup>
                                     <Button type="submit" variant="secondary" id="scale">Scale</Button>
-                                    <Button type="submit" variant="secondary" style={{ marginTop: "2em" }} className="scalebtn" disabled={this.state.disabled} block onClick={() => this.alert()}>Customize</Button>
-                                    {this.alert}
+                                    <Button type="submit" variant="secondary" style={{ marginTop: "2em" }} className="scalebtn" disabled={this.state.disabled} block onClick={handleShow}>Customize</Button>
                                     <h2 className="scale" style={{ marginTop: "2em" }}>Customization Summary:</h2>
                                     <Summary />
                                 </Form>
