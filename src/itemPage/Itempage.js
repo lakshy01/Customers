@@ -3,9 +3,10 @@ import { Button, Col, Form, Container, Row, ButtonGroup } from 'react-bootstrap'
 import history from './../history';
 // import "./Home.css";
 import Sidenav from '../Home/components/Sidenav';
-import Summary from '../Product/Summary';
+import Summary from '../Customize/Summary';
 import Toolbar from '../Home/components/Toolbar';
 import Backdrop from '../Home/components/Backdrop';
+import axios from 'axios';
 
 export default class Itempage extends Component {
     state = {
@@ -13,7 +14,9 @@ export default class Itempage extends Component {
         disabled: false,
         sideDrawerOpen: false,
         id: null,
-        size: ''
+        value: '',
+        size: '',
+        id_0: null
     }
     drawerToggleClickHandler = () => {
         this.setState(prevState => {
@@ -34,15 +37,25 @@ export default class Itempage extends Component {
     }
     componentDidMount() {
         let id = this.props.match.params.item_id;
-        this.setState({
-            id: id
-        })
+        axios.get(`http://localhost:8000/` + id)
+        .then(res => {
+            this.setState({
+                value: res.data.items,
+                id: res.data._id
+            })
+        }) 
+        axios.get(`http://localhost:8000/` + id + `/tags`)
+        .then(res => {
+            this.setState({
+                id_0: res.data[0]._id
+            })
+        }) 
     }
     sizeUpdate = (e) => {
         this.setState({ size: e})
     }
     render() {
-        const { image } = this.state
+        const { image,id_0 } = this.state
         let backdrop
 
         if (this.state.sideDrawerOpen) {
@@ -72,9 +85,9 @@ export default class Itempage extends Component {
                                         <Button onClick={() => this.sizeUpdate('XS')}>XS</Button><Button onClick={() => this.sizeUpdate('S')}>S</Button><Button onClick={() => this.sizeUpdate('M')}>M</Button><Button onClick={() => this.sizeUpdate('L')}>L</Button><Button onClick={() => this.sizeUpdate('XL')}>XL</Button>
                                     </ButtonGroup>
                                     <Button type="submit" variant="secondary" id="scale">Scale</Button>
-                                    <Button type="submit" variant="secondary" style={{marginTop:"2em"}} className="scalebtn" disabled={this.state.disabled} block onClick={() => history.push('/Collar')}>Customize</Button>
+                                    <Button type="submit" variant="secondary" style={{marginTop:"2em"}} className="scalebtn" disabled={this.state.disabled} block onClick={() => history.push('/' + this.state.id + '/customization/' + id_0)}>Customize</Button>
                                     <h2 className="scale"  style={{marginTop: "2em"}}>Customization Summary:</h2>
-                                    <Summary value={this.state.id} size={this.state.size}/>
+                                    <Summary value={this.state.value} size={this.state.size}/>
                                      
                                 </Form>
                             </Col>

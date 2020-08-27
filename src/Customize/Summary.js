@@ -1,15 +1,8 @@
 import React from 'react';
-import { Container, Form, Col, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+// import axios from 'axios'
 
 class Summary extends React.Component {
-    constructor(props) {
-        super(props);
-
-        // console.log(props);
-        // this.state = {
-        //     size: this.props.size
-        // };
-    }
     render() {
         return (
             <div>

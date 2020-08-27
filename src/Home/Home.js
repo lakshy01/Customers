@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Button, Col, Form, Container, Row, ButtonGroup, Alert } from 'react-bootstrap';
-import history from './../history';
 import "./Home.css";
 import Sidenav from './components/Sidenav';
-import Summary from '../Product/Summary';
+import Summary from '../Customize/Summary';
 import Toolbar from './components/Toolbar';
 import Backdrop from './components/Backdrop';
 
@@ -12,7 +11,7 @@ export default class Home extends Component {
         image: 'https://www.siliconvalleymedicalclinic.com/wp-content/plugins/complianz-gdpr/assets/images/placeholder.jpg',
         disabled: false,
         sideDrawerOpen: false,
-        
+
     }
     drawerToggleClickHandler = () => {
         this.setState(prevState => {
@@ -31,13 +30,14 @@ export default class Home extends Component {
         }
         reader.readAsDataURL(e.target.files[0])
     }
-    alert = () => {
+    alert() {
         return (
-            <Alert variant="success">
-          </Alert>
+            <Alert variant='warning'>
+                Choose a category to proceed
+            </Alert>
         )
     }
-    
+
     render() {
         const { image } = this.state
         let backdrop
@@ -64,13 +64,14 @@ export default class Home extends Component {
                             </Col>
                             <Col>
                                 <Form className="scale">
-                                    <h2 className="scale"  style={{marginBottom:"20px"}}>Measurements:</h2>
+                                    <h2 className="scale" style={{ marginBottom: "20px" }}>Measurements:</h2>
                                     <ButtonGroup id="options">
                                         <Button >XS</Button><Button>S</Button><Button>M</Button><Button>L</Button><Button>XL</Button>
                                     </ButtonGroup>
                                     <Button type="submit" variant="secondary" id="scale">Scale</Button>
-                                    <Button type="submit" variant="secondary" style={{marginTop:"2em"}} className="scalebtn" disabled={this.state.disabled} block onClick={() => this.alert()}>Customize</Button>
-                                    <h2 className="scale"  style={{marginTop: "2em"}}>Customization Summary:</h2>
+                                    <Button type="submit" variant="secondary" style={{ marginTop: "2em" }} className="scalebtn" disabled={this.state.disabled} block onClick={() => this.alert()}>Customize</Button>
+                                    {this.alert}
+                                    <h2 className="scale" style={{ marginTop: "2em" }}>Customization Summary:</h2>
                                     <Summary />
                                 </Form>
                             </Col>
@@ -198,16 +199,16 @@ export default class Home extends Component {
                         <Button id="post" variant="secondary" type="submit" block>Post</Button>
                     </Form>
                     <div className="instructions" >
-                    <Container style={{width:"500px"}} >
-                        <h2>Instructions To Upload</h2>
-                        <ul >
-                            <li>Uploaded image should be clear.</li>
-                            <li>Mention if there are any addtional requirements.</li>
-                            <li>Open the page where you want insert the image.</li>
-                            <li>Use your keywords in photo option.</li>
-                            <li>In the Add images select, add selected to insert image into the page.</li>
-                        </ul>
-                    </Container>
+                        <Container style={{ width: "500px" }} >
+                            <h2>Instructions To Upload</h2>
+                            <ul >
+                                <li>Uploaded image should be clear.</li>
+                                <li>Mention if there are any addtional requirements.</li>
+                                <li>Open the page where you want insert the image.</li>
+                                <li>Use your keywords in photo option.</li>
+                                <li>In the Add images select, add selected to insert image into the page.</li>
+                            </ul>
+                        </Container>
                     </div>
                 </div>
             </div>

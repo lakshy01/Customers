@@ -10,7 +10,7 @@ class Filter extends React.Component {
             key={Math.random()}
             className="col-3 col-lg-2  m-2">
             <Card className="item-holder" onClick={() => this.props.cardSelect(card.id)}>
-              <img className="item" src={card.image} alt={card.name} />
+              <img className="item" src={card} alt={card.name} />
             </Card>
           </div>
         );
