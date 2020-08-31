@@ -5,12 +5,16 @@ import Home from "./Home/Home";
 import CustomizationPage from "./Customize/customizationPage";
 import Itempage from './itemPage/Itempage';
 import Custombtn from './Customize/Custombtn';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
+
+library.add( faArrowCircleLeft )
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
+        <div className="App" >
           <Route path="/" exact component={Home} />
           <Route path="/:item_id/customization" exact component={Custombtn} />
           <Route path="/:item_id/customization/:tagId" exact component={CustomizationPage} />

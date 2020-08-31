@@ -1,6 +1,6 @@
 .side-drawer {
     height: 100%;
-    background: white;
+    background: #e8dee7;
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -32,7 +32,7 @@
 }
 .side-drawer a:hover,
 .side-drawer a:active {
-    color: #007bff;
+    color: rgb(82, 82, 82);
 }
 .accordion {
     margin-top: 20px;

@@ -16,6 +16,17 @@
     margin-bottom: 4em;
     align-items: center;
 }
+#alert{
+    top: 20px;
+    left: 76px;
+    z-index: 50;
+    animation-name: alert;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: -2px -2px 5px 1px rgba(255, 255, 255, 0.7);
+    animation-duration: 1s;
+    height: max-content;
+}
+
 .customize {
     text-align: center;
     margin-top: 5em;
@@ -44,17 +55,19 @@
 .image-upload {
     margin: auto;
     margin-top: 2em;
+    margin-bottom: 2em;
     padding: 7px;
-    background-color: #68ebd1;
+    background-color: #ffd662ff;
     height: 40px;
     width: 350px;
-    border-radius: 40px;
+    border-radius: 4px;
     text-align: center;
     cursor: pointer;
+    transition: 0.2s;
 }
-.image-upload:focus {
-    box-shadow: 0 0 10px #68ebd1;
-    border:3px solid #68ebd1;
+.image-upload:hover {
+    color: white;
+    transition: 0.2s;
 }
 #measure {
     height: 350px;
@@ -64,70 +77,17 @@
 #measure:focus {
     outline: none !important;
     border:3px solid lightgray;
-    box-shadow: 0 0 10px rgb(49, 49, 49);
-}
-.scale {
-    margin: auto;
-    font-size: larger;
-    margin-bottom: -1em;
-}
-.scalebtn {
-    background-color: #68ebd1;
-    color: rgb(15, 58, 49);
-    outline: none !important;
-    border: none !important;
-    height: 40px;
-    width: 350px;
-    border-radius: 40px;
-    text-align: center;
-    margin: auto;
-}
-.scalebtn:focus-visible {
-    outline: none !important;
-    border:3px solid lightgray;
-    box-shadow: 0 0 10px rgb(49, 49, 49);
-}
-.scalebtn:hover {
-    outline: none !important;
-    background-color: #68ebd1;
-}
-#scale {
-    background-color: #68ebd1;
-    color: rgb(15, 58, 49);
-    border: none !important;
-    margin-right: auto;
-    margin-left: 40px;
-    border-radius: 40px;
-}
-#options button {
-    background-color: white;
-    color: black;
-    border-color: white;
-    margin: 2px;
-    width: 40px;
-}
-#options button:hover {
-    background-color: white;
-    color: black;
-    border-color: white;
-}
-#options button:focus {
-    background-color: white;
-    color: black;
-    border-color: white;
-    border-radius: 100%;
-    box-shadow: grey;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 
 #post{
-    background-color: #68ebd1;
-    color: rgb(15, 58, 49);
+    background-color: #ffd662ff;
+    color: black;
     outline: none !important;
     border: none !important;
     height: 40px;
     width: 150px;
-    border-radius: 40px;
     margin: auto;
     margin-bottom: 4em !important;
 }
@@ -137,11 +97,42 @@
 .form {
     text-decoration: none;
     border: white;
-    background-color: white;
+    background-color: #e8dee7;
     margin: 2em;
-    padding-top: 10px;
     width: 40em !important;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 20px 20px 10px 20px;
+    padding-top: 5px;
+    padding-bottom: 4px;
+}
+
+@media all and (max-width: 500px) {
+    .Home {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+        justify-items: center;
+    }
+    .Home .lander {
+        align-items: center;
+        align-content: center;
+        flex-direction: column;
+        justify-items: center;
+    }
+    .form{
+        margin-left: 30px !important;
+        margin-right: 30px !important;
+    }
+}
+
+@keyframes alert {
+    from {
+        left: 200px;
+        opacity: 0;
+    }
+    to {
+        left: 76px;
+        opacity: 100%;
+    }
 }
 

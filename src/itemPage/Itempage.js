@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Button, Col, Form, Container, Row, ButtonGroup } from 'react-bootstrap';
+import { Button, Col, Form, Container, Row } from 'react-bootstrap';
 import history from './../history';
 // import "./Home.css";
 import Sidenav from '../Home/components/Sidenav';
 import Summary from '../Customize/Summary';
 import Toolbar from '../Home/components/Toolbar';
 import Backdrop from '../Home/components/Backdrop';
+import Measure from '../Customize/Measure'
 import axios from 'axios';
 
 export default class Itempage extends Component {
@@ -37,25 +38,26 @@ export default class Itempage extends Component {
     }
     componentDidMount() {
         let id = this.props.match.params.item_id;
-        axios.get(`http://localhost:8000/` + id)
-        .then(res => {
-            this.setState({
-                value: res.data.items,
-                id: res.data._id
+        axios.get(`http://localhost:8000/customize/` + id)
+            .then(res => {
+                this.setState({
+                    value: res.data.items,
+                    id: res.data._id
+                })
             })
-        }) 
-        axios.get(`http://localhost:8000/` + id + `/tags`)
-        .then(res => {
-            this.setState({
-                id_0: res.data[0]._id
+        axios.get(`http://localhost:8000/customize/` + id + `/tags`)
+            .then(res => {
+                this.setState({
+                    id_0: res.data[0]._id
+                })
             })
-        }) 
+            .catch(res => { console.log(res) })
     }
     sizeUpdate = (e) => {
-        this.setState({ size: e})
+        this.setState({ size: e })
     }
     render() {
-        const { image,id_0 } = this.state
+        const { image, id_0 } = this.state
         let backdrop
 
         if (this.state.sideDrawerOpen) {
@@ -78,18 +80,11 @@ export default class Itempage extends Component {
                                     Upload Image
                             </label>
                             </Col>
-                            <Col>
-                                <Form className="scale">
-                                    <h2 className="scale"  style={{marginBottom:"20px"}}>Measurements:</h2>
-                                    <ButtonGroup id="options">
-                                        <Button onClick={() => this.sizeUpdate('XS')}>XS</Button><Button onClick={() => this.sizeUpdate('S')}>S</Button><Button onClick={() => this.sizeUpdate('M')}>M</Button><Button onClick={() => this.sizeUpdate('L')}>L</Button><Button onClick={() => this.sizeUpdate('XL')}>XL</Button>
-                                    </ButtonGroup>
-                                    <Button type="submit" variant="secondary" id="scale">Scale</Button>
-                                    <Button type="submit" variant="secondary" style={{marginTop:"2em"}} className="scalebtn" disabled={this.state.disabled} block onClick={() => history.push('/' + this.state.id + '/customization/' + id_0)}>Customize</Button>
-                                    <h2 className="scale"  style={{marginTop: "2em"}}>Customization Summary:</h2>
-                                    <Summary value={this.state.value} size={this.state.size}/>
-                                     
-                                </Form>
+                            <Col style={{ paddingTop: "50px" }}>
+                                <Measure />
+                                <Summary value={this.state.value} size={this.state.size} />
+                                <Button type="submit" variant="secondary" style={{ marginTop: "2em" }} className="scalebtn" disabled={this.state.disabled} block
+                                    href={'/' + this.state.id + '/customization/' + id_0}>Customize</Button>
                             </Col>
                         </Row>
                     </Container>
@@ -214,7 +209,7 @@ export default class Itempage extends Component {
                         </Container>
                         <Button id="post" variant="secondary" type="submit" block>Post</Button>
                     </Form>
-                    <div className="instructions" >
+                    {/* <div className="instructions" >
                     <Container style={{width:"500px"}} >
                         <h2>Instructions To Upload</h2>
                         <ul >
@@ -225,9 +220,9 @@ export default class Itempage extends Component {
                             <li>In the Add images select, add selected to insert image into the page.</li>
                         </ul>
                     </Container>
-                    </div>
+                    </div> */}
                 </div>
-            </div>
+            </div >
         );
     }
 }

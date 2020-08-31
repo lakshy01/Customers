@@ -7,7 +7,7 @@ class Summary extends React.Component {
         return (
             <div>
                 <Container fluid className="summary" >
-                <h5 style={{ marginBottom: "2em", marginTop: "2em" }}> </h5>
+                    <h5 style={{ marginBottom: "1em", marginTop: "2em", fontWeight: "bolder" }}> Customization Summary: </h5>
                     <p><strong>Item:</strong> {this.props.value} </p>
                     <p><strong>Size:</strong> {this.props.size} </p>
                 </Container>

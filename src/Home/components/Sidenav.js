@@ -2,6 +2,7 @@ import React from 'react'
 import './Sidenav.css'
 import { Accordion } from 'react-bootstrap'
 import axios from 'axios'
+import { Scrollbars } from 'react-custom-scrollbars';
 
 
 class Sidenav extends React.Component {
@@ -13,7 +14,7 @@ class Sidenav extends React.Component {
         };
     }
     componentDidMount() {
-        axios.get(`http://localhost:8000/`)
+        axios.get(`http://localhost:8000/customize/`)
             .then(res => {
                 this.setState({
                     details: res.data
@@ -28,39 +29,39 @@ class Sidenav extends React.Component {
         }
         const { details } = this.state
         const menList = details.length ? (
-            details.map(detail => {
+            details.map((detail, idx) => {
                 return (
                     detail.section === "Men" ? (
-                        <a href={'/' + detail._id} style={{ textDecoration: 'none' }}>
+                        <a href={'/' + detail._id} key={idx} style={{ textDecoration: 'none' }}>
                             <li>{detail.items}</li>
                         </a>
-                    ) : ( null )
+                    ) : (null)
                 )
             })
         ) : (
                 <p>Nothing to display</p>
             )
         const womenList = details.length ? (
-            details.map(detail => {
+            details.map((detail, idx) => {
                 return (
                     detail.section === "Women" ? (
-                        <a href={'/' + detail._id} style={{ textDecoration: 'none' }}>
+                        <a href={'/' + detail._id} key={idx} style={{ textDecoration: 'none' }}>
                             <li>{detail.items}</li>
                         </a>
-                    ) : ( null )
+                    ) : (null)
                 )
             })
         ) : (
                 <p>Nothing to display</p>
             )
         const kidsList = details.length ? (
-            details.map(detail => {
+            details.map((detail, idx) => {
                 return (
                     detail.section === "Kids" ? (
-                        <a href={'/' + detail._id} style={{ textDecoration: 'none' }}>
+                        <a href={'/' + detail._id} key={idx} style={{ textDecoration: 'none' }}>
                             <li>{detail.items}</li>
                         </a>
-                    ) : ( null )
+                    ) : (null)
                 )
             })
         ) : (
@@ -69,38 +70,36 @@ class Sidenav extends React.Component {
 
         return (
             <nav className={drawerClasses}>
-                <ul>
-                    <Accordion className="accordian" style={{ textDecoration: 'none' }} defaultActiveKey="null">
-                        <Accordion.Toggle as="h4" eventKey="0">
-                            Men</Accordion.Toggle>
-                        <Accordion.Collapse eventKey="0">
-                            <ul>
-                                {menList}
-                            </ul>
-                        </Accordion.Collapse>
-                        <hr />
-                    {/* </Accordion>
-                    <Accordion className="accordian" style={{ textDecoration: 'none' }} defaultActiveKey="null"> */}
-                        <Accordion.Toggle as="h4" eventKey="1">
-                            Women</Accordion.Toggle>
-                        <Accordion.Collapse eventKey="1">
-                            <ul>
-                                {womenList}
-                            </ul>
-                        </Accordion.Collapse>
-                        <hr />
-                    {/* </Accordion>
-                    <Accordion className="accordian" style={{ textDecoration: 'none' }} defaultActiveKey="null"> */}
-                        <Accordion.Toggle as="h4" eventKey="2">
-                            Kids</Accordion.Toggle>
-                        <Accordion.Collapse eventKey="2">
-                            <ul>
-                                {kidsList}
-                            </ul>
-                        </Accordion.Collapse>
-                        <hr />
-                    </Accordion>
-                </ul>
+                <Scrollbars style={{ width: '100%', height: '100%' }}>
+                    <ul>
+                        <Accordion className="accordian" style={{ textDecoration: 'none' }} defaultActiveKey="null">
+                            <Accordion.Toggle as="h4" eventKey="0">
+                                Men</Accordion.Toggle>
+                            <Accordion.Collapse eventKey="0">
+                                <ul>
+                                    {menList}
+                                </ul>
+                            </Accordion.Collapse>
+                            <hr />
+                            <Accordion.Toggle as="h4" eventKey="1">
+                                Women</Accordion.Toggle>
+                            <Accordion.Collapse eventKey="1">
+                                <ul>
+                                    {womenList}
+                                </ul>
+                            </Accordion.Collapse>
+                            <hr />
+                            <Accordion.Toggle as="h4" eventKey="2">
+                                Kids</Accordion.Toggle>
+                            <Accordion.Collapse eventKey="2">
+                                <ul>
+                                    {kidsList}
+                                </ul>
+                            </Accordion.Collapse>
+                            <hr />
+                        </Accordion>
+                    </ul>
+                </Scrollbars>
             </nav>
         )
     }
