@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Button, ButtonGroup, ToggleButton } from 'react-bootstrap';
 import './Custombtn.css'
+import { connect } from 'react-redux';
+import { selectedRadio } from './actions';
 
 class Measure extends React.Component {
     constructor() {
@@ -40,9 +42,10 @@ class Measure extends React.Component {
                                 id="options"
                                 value={radio.value}
                                 checked={this.state.radioValue === radio.value}
-                                onChange={this.setRadioValue}
-                                style={this.state.radioValue === radio.value ? {borderRadius:'4px', margin:'2px', backgroundColor: '#ffd662ff', borderColor: '#ffd662ff'} : {borderRadius:'4px', margin:'2px'}}
-                                >
+                                // onChange={this.setRadioValue}
+                                onClick={() => { this.props.selectedRadio(radio.value) }}
+                                style={this.state.radioValue === radio.value ? { borderRadius: '4px', margin: '2px', backgroundColor: '#ffd662ff', borderColor: '#ffd662ff' } : { borderRadius: '4px', margin: '2px' }}
+                            >
                                 {radio.name}
                             </ToggleButton>
                         ))}
@@ -53,4 +56,6 @@ class Measure extends React.Component {
         );
     }
 }
-export default Measure;
+
+
+export default connect(null, { selectedRadio })(Measure);

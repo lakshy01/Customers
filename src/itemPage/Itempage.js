@@ -56,6 +56,7 @@ export default class Itempage extends Component {
     sizeUpdate = (e) => {
         this.setState({ size: e })
     }
+
     render() {
         const { image, id_0 } = this.state
         let backdrop
